@@ -1,0 +1,5 @@
+/server/bamenv
+*sqlite3
+/frontend/frontend/node_modules
+Examen*
+*docx
