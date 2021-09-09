@@ -6,7 +6,6 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
-from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .serializers import UserSerializer, CustomerSerializer, StatusHistorySerializer
 from .models import Customer, StatusHistory
@@ -24,11 +23,11 @@ class Login(APIView):
             return token
         else:
            return None
+
     def post(self, request, format = None):
         username = request.data["username"]
         password = request.data["password"]
         token = self.authentication(request, username, password)
-        print(token)
         if token is None:
             return Response(status.HTTP_400_BAD_REQUEST)
         else:
@@ -50,7 +49,9 @@ class CustomerList(APIView):
     def post(self, request, format=None):
         serializer = CustomerSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            model = serializer.save()
+            status_history = StatusHistory.objects.create(customer = model)
+            status_history.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -91,11 +92,12 @@ class StatusHistoryList(APIView):
 
     def post(self, request, pk, format=None):
         customer_status_history = StatusHistory.objects.filter(customer = pk)
-        print(customer_status_history)
+        last_status = customer_status_history.latest('id').status
+        actual_status = request.data["status"]
         history_dict = request.data.copy()
         history_dict["customer"] = pk
         serializer = StatusHistorySerializer(data=history_dict)
-        if serializer.is_valid():
+        if serializer.is_valid() and last_status != actual_status:
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

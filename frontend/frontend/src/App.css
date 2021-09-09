@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+}
+h1{
+    margin: auto;
+    padding: 0;
+    color:white;
+}
+.app-header{
+    background-color:hsl(0, 83%, 54%);
+    text-align: center;
+    margin: 0;
+    padding: auto;
+    height: 100px;
+}
+.content{
+    width: 100%;
+    height: 100vh;
+}

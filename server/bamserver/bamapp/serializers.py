@@ -9,11 +9,13 @@ class UserSerializer(serializers.Serializer):
         fields = ['username', 'password']
 
 class CustomerSerializer(serializers.ModelSerializer):
+    id = serializers.ReadOnlyField()
     class Meta:
         model = Customer
-        fields = ['name', 'date_of_birth', 'email']
+        fields = ['id' ,'name', 'date_of_birth', 'email']
 
 class StatusHistorySerializer(serializers.ModelSerializer):
+    check_in_time = serializers.ReadOnlyField()
     class Meta:
         model = StatusHistory
-        fields = ['status', 'customer']
+        fields = ['status', 'check_in_time','customer']

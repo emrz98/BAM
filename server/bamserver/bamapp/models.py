@@ -10,12 +10,12 @@ class Customer(models.Model):
         return self.name + " " + str(self.date_of_birth)
 class StatusHistory(models.Model):
     CHOICES = [
-        ("nu", "Nuevo"), 
-        ("es", "En seguimiento"), 
-        ("at", "Atendido"), 
-        ("re", "Rechazado"),
+        ("Nuevo", "Nuevo"), 
+        ("En seguimiento", "En seguimiento"), 
+        ("Atendido", "Atendido"), 
+        ("Rechazado", "Rechazado"),
     ]
-    status = models.CharField(max_length = 30, choices= CHOICES)
+    status = models.CharField(max_length = 30, choices= CHOICES, default="Nuevo")
     check_in_time = models.DateTimeField(auto_now = True)
     customer = models.ForeignKey(Customer, on_delete = models.CASCADE)
 

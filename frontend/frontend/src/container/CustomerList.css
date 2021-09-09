@@ -1,0 +1,22 @@
+
+
+.customer-list-container{
+    padding: 10px;
+}
+
+.new-customer-form{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.title-customer-list-items{
+    color: white;
+    text-align: center;
+}
+.customer-list-items{
+    margin-top: 10px;
+    border: 2px solid black;
+    width: 20%;
+    background-color: gray;
+}

@@ -1,0 +1,12 @@
+p:hover{
+    cursor: pointer;
+}
+
+.item{
+    background-color: tomato;
+    border: 2px solid black;
+    text-align: center;
+}
+.item:hover{
+    background-color: thistle;
+}
