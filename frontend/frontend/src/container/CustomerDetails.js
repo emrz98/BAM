@@ -28,7 +28,7 @@ function CustomerDetails(props){
                     <h3>Historia</h3>
                     <div>
                         <form onSubmit={e => props.onUpdateStatus(e, props.currentDetail["id"], status)}>
-                            <select value={status} onChange={handleStatus}>
+                            <select value={status === null ? initStatus : status} onChange={handleStatus}>
                                 <option value="Nuevo">Nuevo</option>
                                 <option value="En seguimiento">En seguimiento</option>
                                 <option value="Atendido">Atendido</option>

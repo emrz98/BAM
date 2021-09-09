@@ -28,6 +28,7 @@ class Database{
         }
         else{
             alert("Cliente creado");
+            window.location.reload();
         }   
     }
 
@@ -43,6 +44,7 @@ class Database{
         }
         else{
             alert("Status Actualizado");
+            window.location.reload();
         }   
     }
 

@@ -1,10 +1,18 @@
 .login{
     background-color: gray;
+    border-radius: 5px;
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: auto;
-    padding-right: auto;
     width: 400px;
     height: 600px;
+    padding:50px;
+}
+
+.item-login{
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    width: auto;
 }

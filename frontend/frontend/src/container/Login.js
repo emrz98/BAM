@@ -27,15 +27,18 @@ function Login(props){
     return(
         <div className = "login">
             <form onSubmit={handleSubmit}>
-                <div className="user">
+                <div className="item-login">
+                    <h2>Log in</h2>
+                </div>
+                <div className="item-login">
                     <p>User</p>
                     <input type="text" value = {user} onChange = {onChangeUser}/>
                 </div>
-                <div className="password">
+                <div className="item-login">
                     <p>Password</p>
                     <input type="password" value = {password} onChange = {onChangePassword}/>
                 </div>
-                <div className="submit">
+                <div className="item-login">
                     <input type="submit" value={"Login"}/>
                 </div>
             </form>
